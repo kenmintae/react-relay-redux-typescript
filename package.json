@@ -1,0 +1,30 @@
+{
+  "name": "react-relay-redux-typescript",
+  "version": "1.0.0",
+  "description": "Boilerplate of React+Relay+Redux in Typescript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sjzamora86/react-relay-redux-typescript.git"
+  },
+  "keywords": [
+    "react",
+    "relay",
+    "redux",
+    "typesript"
+  ],
+  "author": "Joan Zamora",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sjzamora86/react-relay-redux-typescript/issues"
+  },
+  "homepage": "https://github.com/sjzamora86/react-relay-redux-typescript",
+  "dependencies": {
+    "express": "^4.14.0",
+    "express-graphql": "^0.6.1",
+    "graphql": "^0.8.2"
+  }
+}
