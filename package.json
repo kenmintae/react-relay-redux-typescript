@@ -23,8 +23,18 @@
   },
   "homepage": "https://github.com/sjzamora86/react-relay-redux-typescript",
   "dependencies": {
-    "express": "^4.14.0",
-    "express-graphql": "^0.6.1",
-    "graphql": "^0.8.2"
+    "@types/bluebird": "^3.0.36",
+    "@types/hapi": "^13.0.37",
+    "@types/mongoose": "^4.6.1",
+    "@types/node": "^6.0.51",
+    "@types/ramda": "0.0.2",
+    "bluebird": "^3.4.6",
+    "graphql": "^0.8.2",
+    "graphql-relay": "^0.4.4",
+    "hapi": "^15.2.0",
+    "hapi-graphql": "^1.0.1",
+    "mongoose": "^4.7.0",
+    "ramda": "^0.22.1",
+    "typescript": "^2.0.10"
   }
 }
