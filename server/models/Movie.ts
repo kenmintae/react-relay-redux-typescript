@@ -11,7 +11,6 @@ export default new mongoose.Schema({
     title: {
         type: String,
         required: true,
-        trim: true,
         trim: true
     },
     director: {

@@ -4,7 +4,7 @@
   "description": "Boilerplate of React+Relay+Redux in Typescript",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "ts-node server/server.ts"
   },
   "repository": {
     "type": "git",
@@ -35,6 +35,7 @@
     "hapi-graphql": "^1.0.1",
     "mongoose": "^4.7.0",
     "ramda": "^0.22.1",
+    "ts-node": "^1.7.0",
     "typescript": "^2.0.10"
   }
 }

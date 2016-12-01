@@ -8,7 +8,7 @@ export class ActorDAO {
     private Actor;
 
     constructor() {
-        if (R.contains('Movie', mongoose.modelNames())) {
+        if (R.contains('Actor', mongoose.modelNames())) {
             this.Actor = mongoose.model('Actor');
         } else {
             this.Actor = mongoose.model('Actor', ActorSchema);
@@ -44,9 +44,9 @@ export class ActorDAO {
                 .populate({
                     path: 'actors'
                 })
-                .exec((error, movie) => {
+                .exec((error, actor) => {
                     if (error) return reject(error);
-                    return resolve(movie);
+                    return resolve(actor);
                 });
         });
     }

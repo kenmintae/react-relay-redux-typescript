@@ -5,7 +5,7 @@ import ActorType from '../models/ActorGraphQLType';
 const actorDAO = new ActorDAO();
 
 const ActorQuery = {
-    actors: {
+    actor: {
         type: ActorType.Actor,
         args: {
             id: {
@@ -13,8 +13,12 @@ const ActorQuery = {
             }
         },
         resolve: (root, args) => {
-            return actorDAO.getActors()
+            return actorDAO.getActorById(args.id)
         }
+    },
+    actors: {
+        type: new graphql.GraphQLList(ActorType.Actor),
+        resolve: actorDAO.getActors()
     }
 };
 

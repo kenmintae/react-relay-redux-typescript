@@ -2,7 +2,7 @@ import Node from '../interface/Node';
 import ActorType from './ActorGraphQLType';
 const graphql = require('graphql');
 
-const Movie = new graphql.GraphQLObjectType({
+const _Movie = new graphql.GraphQLObjectType({
     name: 'Movie',
     description: 'A Movie',
     fields: () => ({
@@ -25,7 +25,7 @@ const Movie = new graphql.GraphQLObjectType({
     interfaces: () => [Node]
 });
 
-const MovieInput = new graphql.GraphQLObjectType({
+const _MovieInput = new graphql.GraphQLObjectType({
     name: 'MovieInput',
     fields: () => ({
         title: {
@@ -41,6 +41,6 @@ const MovieInput = new graphql.GraphQLObjectType({
 });
 
 export default {
-    Movie: Movie,
-    MovieInput: MovieInput
+    Movie: _Movie,
+    MovieInput: _MovieInput
 };
