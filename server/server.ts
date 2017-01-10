@@ -1,11 +1,14 @@
 import * as Hapi from 'hapi';
 import GraphQLSchema from './schema';
 import {startDatabase} from './database';
+import {createInitialData} from './mock-data';
 const hapi = require('hapi');
 const GraphQL = require('hapi-graphql');
 const server = new Hapi.Server();
 
 startDatabase();
+createInitialData();
+
 
 server.connection({
     host: 'localhost',

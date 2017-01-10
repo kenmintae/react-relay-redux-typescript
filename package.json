@@ -37,5 +37,6 @@
     "ramda": "^0.22.1",
     "ts-node": "^1.7.0",
     "typescript": "^2.0.10"
-  }
+  },
+  "devDependencies": {}
 }
