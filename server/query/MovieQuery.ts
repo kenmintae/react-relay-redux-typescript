@@ -1,7 +1,6 @@
 const graphql = require('graphql');
 import {MovieDAO} from '../dao/MovieDAO';
 import MovieType from '../models/MovieGraphQLType';
-
 const movieDAO = new MovieDAO();
 
 const MovieQuery = {
@@ -18,7 +17,7 @@ const MovieQuery = {
     },
     movies: {
         type: new graphql.GraphQLList(MovieType.Movie),
-        resolve: movieDAO.getMovies()
+        resolve: () => movieDAO.getMovies()
     }
 };
 

@@ -18,7 +18,7 @@ const ActorQuery = {
     },
     actors: {
         type: new graphql.GraphQLList(ActorType.Actor),
-        resolve: actorDAO.getActors()
+        resolve: () => actorDAO.getActors()
     }
 };
 

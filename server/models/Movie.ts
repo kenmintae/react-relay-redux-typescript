@@ -21,5 +21,10 @@ export default new mongoose.Schema({
     actors: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Actor'
-    }]
+    }],
+    type: {
+        type: String,
+        required: true,
+        default: 'Movie'
+    }
 });

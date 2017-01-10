@@ -24,9 +24,7 @@ export class MovieDAO {
 
             this.Movie
                 .find({})
-                .populate({
-                    path: 'actors'
-                })
+                .populate('actors')
                 .exec((error, movies) => {
                     if (error) return reject(error);
                     return resolve(movies);
@@ -49,5 +47,59 @@ export class MovieDAO {
                     return resolve(movie);
                 });
         });
+    }
+
+    public addMovie(movie: any): Bluebird<any> {
+        return new Bluebird((resolve: Function, reject: Function) => {
+            const _movie = new this.Movie(movie);
+
+            _movie
+                .save((error, movie) => {
+                    if (error) return reject(this.createFailureResponse(error));
+                    return resolve(this.createSuccessResponse(movie));
+                });
+        });
+    }
+
+    public updateMovie(movie: any): Bluebird<any> {
+        return new Bluebird((resolve: Function, reject: Function) => {
+            const _query = {id: movie.id};
+            const _set = {
+                $set: movie
+            };
+
+            this.Movie
+                .findOneAndUpdate(_query, _set)
+                .exec((error, updated) => {
+                    if (error) return reject(this.createFailureResponse(error));
+                    return resolve(this.createSuccessResponse(updated));
+                });
+        });
+    }
+
+    public removeMovie(movie: any): Bluebird<any> {
+        return new Bluebird((resolve: Function, reject: Function) => {
+
+            this.Movie
+                .findByIdAndRemove(movie.id)
+                .exec((error, deleted) => {
+                    if (error) return reject(this.createFailureResponse(error));
+                    return resolve(this.createSuccessResponse(deleted));
+                });
+        });
+    }
+
+    private createSuccessResponse(movie: any) {
+        return {
+            success: true,
+            movie: movie
+        }
+    }
+
+    private createFailureResponse(message?: string) {
+        return {
+            success: false,
+            message: message
+        }
     }
 }

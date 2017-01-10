@@ -17,5 +17,10 @@ export default new mongoose.Schema({
         type: String,
         required: true,
         trim: true
+    },
+    type: {
+        type: String,
+        required: true,
+        default: 'Actor'
     }
 });

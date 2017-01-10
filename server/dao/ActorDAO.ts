@@ -24,9 +24,6 @@ export class ActorDAO {
 
             this.Actor
                 .find({})
-                .populate({
-                    path: 'actors'
-                })
                 .exec((error, movies) => {
                     if (error) return reject(error);
                     return resolve(movies);
@@ -41,13 +38,64 @@ export class ActorDAO {
             };
             this.Actor
                 .findOne(query)
-                .populate({
-                    path: 'actors'
-                })
                 .exec((error, actor) => {
                     if (error) return reject(error);
                     return resolve(actor);
                 });
         });
+    }
+
+    public addActor(actor: any): Bluebird<any> {
+        return new Bluebird((resolve: Function, reject: Function) => {
+            const _actor = new this.Actor(actor);
+
+            _actor
+                .save((error, movie) => {
+                    if (error) return reject(this.createFailureResponse(error));
+                    return resolve(this.createSuccessResponse(movie));
+                });
+        });
+    }
+
+    public updateActor(actor: any): Bluebird<any> {
+        return new Bluebird((resolve: Function, reject: Function) => {
+            const _query = {id: actor.id};
+            const _set = {
+                $set: actor
+            };
+
+            this.Actor
+                .findOneAndUpdate(_query, _set)
+                .exec((error, updated) => {
+                    if (error) return reject(this.createFailureResponse(error));
+                    return resolve(this.createSuccessResponse(updated));
+                });
+        });
+    }
+
+    public removeActor(actor: any): Bluebird<any> {
+        return new Bluebird((resolve: Function, reject: Function) => {
+
+            this.Actor
+                .findByIdAndRemove(actor.id)
+                .exec((error, deleted) => {
+                    if (error) return reject(this.createFailureResponse(error));
+                    return resolve(this.createSuccessResponse(deleted));
+                });
+        });
+    }
+
+    private createSuccessResponse(actor: any) {
+        return {
+            success: true,
+            movie: actor
+        }
+    }
+
+    private createFailureResponse(message?: string) {
+        return {
+            success: false,
+            message: message
+        }
     }
 }
